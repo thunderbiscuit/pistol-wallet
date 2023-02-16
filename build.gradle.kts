@@ -13,6 +13,7 @@ repositories {
     google()
     mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    mavenLocal()
 }
 
 kotlin {
@@ -24,6 +25,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation("org.lightningdevkit:ldk-node-jvm:0.1.0")
             }
         }
         val jvmTest by getting
