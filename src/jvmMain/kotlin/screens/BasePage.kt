@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun BasePage() {
-    val currentPage = remember { mutableStateOf(PageState.HOME) }
+    val currentPage = remember { mutableStateOf(PageState.WALLET) }
 
     Sidebar(currentPage)
     Page(currentPage.value)
@@ -30,7 +30,7 @@ fun Sidebar(currentPage: MutableState<PageState>) {
             .background(Color(0xFF2D2D2D))
     ){
         Button(
-            onClick = { currentPage.value = PageState.HOME },
+            onClick = { currentPage.value = PageState.WALLET },
             Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp, bottom = 8.dp, start = 8.dp, end = 8.dp)
@@ -43,7 +43,7 @@ fun Sidebar(currentPage: MutableState<PageState>) {
             Text("Wallet")
         }
         Button(
-            onClick = { currentPage.value = PageState.NODE },
+            onClick = { currentPage.value = PageState.DASHBOARD },
             Modifier
                 .fillMaxWidth()
                 .padding(top = 8.dp, bottom = 8.dp, start = 8.dp, end = 8.dp)
@@ -74,9 +74,9 @@ fun Sidebar(currentPage: MutableState<PageState>) {
 @Composable
 fun Page(currentPage: PageState) {
     when (currentPage) {
-        PageState.HOME  -> Wallet()
-        PageState.NODE  -> Dashboard()
-        PageState.PEERS -> Peers()
+        PageState.WALLET    -> Wallet()
+        PageState.DASHBOARD -> Dashboard()
+        PageState.PEERS     -> Peers()
     }
 }
 
@@ -96,7 +96,7 @@ fun Title(title: String) {
 }
 
 enum class PageState {
-    HOME,
-    NODE,
+    WALLET,
+    DASHBOARD,
     PEERS
 }

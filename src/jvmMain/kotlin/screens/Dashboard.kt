@@ -14,7 +14,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import tb.sampleapps.pistolwallet.LdkNode
+import tb.sampleapps.pistolwallet.lightning.LdkNode
 
 @Composable
 fun Dashboard() {
@@ -23,7 +23,10 @@ fun Dashboard() {
     var fundingAddress by remember { mutableStateOf("") }
     var errorMessages by remember { mutableStateOf("") }
     var nodeIsLive by remember { mutableStateOf(false) }
-    // nodeIsLive = LdkNode.node != null
+
+    if (LdkNode.node != null) {
+        nodeIsLive = true// nodeIsLive = LdkNode.node != null
+    }
 
     Column {
         Title("Node Dashboard")

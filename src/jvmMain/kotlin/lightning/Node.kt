@@ -1,4 +1,4 @@
-package tb.sampleapps.pistolwallet
+package tb.sampleapps.pistolwallet.lightning
 
 import org.lightningdevkit.ldknode.*
 

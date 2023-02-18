@@ -16,7 +16,7 @@ fun App() {
 }
 
 fun main() = application {
-    LdkNode.initialize()
+    // LdkNode.initialize()
 
     Window(
         title = "Pistol Wallet",
