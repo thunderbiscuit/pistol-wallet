@@ -2,10 +2,7 @@ package tb.sampleapps.pistolwallet.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Divider
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,8 +18,10 @@ fun Dashboard() {
     var nodeId by remember { mutableStateOf(" ") }
     var balance by remember { mutableStateOf(" ") }
     var fundingAddress by remember { mutableStateOf("") }
-    var errorMessages by remember { mutableStateOf("") }
+    var errorMessage by remember { mutableStateOf("") }
     var nodeIsLive by remember { mutableStateOf(false) }
+
+    val (snackbarVisibleState, setSnackBarState) = remember { mutableStateOf(false) }
 
     if (LdkNode.node != null) {
         nodeIsLive = true// nodeIsLive = LdkNode.node != null
@@ -121,7 +120,8 @@ fun Dashboard() {
                                     }
                                     nodeIsLive = true
                                 } catch (e: Exception) {
-                                    errorMessages = "Error starting node: ${e.message}"
+                                    errorMessage = "Error starting node: ${e.message}"
+                                    setSnackBarState(true)
                                 }
                                 nodeId = "${LdkNode.node?.nodeId()}"
                             },
@@ -208,10 +208,25 @@ fun Dashboard() {
                                 Text("")
                             }
                         }
+
+                    }
+
+                    if (snackbarVisibleState) {
+                        Snackbar(
+                            action = {
+                                Button(
+                                    onClick = { setSnackBarState(false) }
+                                ) {
+                                    Text("Dismiss")
+                                }
+                            },
+                            modifier = Modifier.padding(8.dp)
+                        ) {
+                            Text(text = errorMessage)
+                        }
                     }
                 }
             }
-            Text(errorMessages)
         }
     }
 }
