@@ -112,8 +112,10 @@ fun Dashboard() {
                         Button(
                             onClick = {
                                 try {
-                                    LdkNode.buildNode()
-                                    LdkNode.node?.start()
+                                    if (LdkNode.node == null) {
+                                        LdkNode.buildNode()
+                                        LdkNode.node?.start()
+                                    }
                                     nodeIsLive = true
                                 } catch (e: Exception) {
                                     errorMessages = "Error starting node: ${e.message}"
@@ -137,7 +139,7 @@ fun Dashboard() {
                             Button(
                                 onClick = {
                                     LdkNode.node?.syncWallets()
-                                    balance = "${LdkNode.node?.totalOnchainBalanceSats()} sat"
+                                    balance = "${LdkNode.node?.totalOnchainBalanceSats()}sat and ${LdkNode.node?.spendableOnchainBalanceSats()}sat spendable"
                                 },
                                 enabled = nodeIsLive,
                                 modifier = Modifier

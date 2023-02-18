@@ -1,8 +1,6 @@
 package tb.sampleapps.pistolwallet
 
-import org.lightningdevkit.ldknode.Builder
-import org.lightningdevkit.ldknode.Config
-import org.lightningdevkit.ldknode.Node
+import org.lightningdevkit.ldknode.*
 
 object LdkNode {
     var node: Node? = null
@@ -24,10 +22,36 @@ object LdkNode {
     }
 
     fun openChannel(nodePukeyAndAddress: String, channelAmountSats: ULong) {
-        node?.connectOpenChannel(
-            nodePubkeyAndAddress = nodePukeyAndAddress,
-            channelAmountSats = channelAmountSats,
-            announceChannel = true
-        )
+        try {
+            node?.connectOpenChannel(
+                nodePubkeyAndAddress = nodePukeyAndAddress,
+                channelAmountSats = channelAmountSats,
+                announceChannel = true
+            )
+        } catch (e: Exception) {
+            println("Error opening channel: ${e.message}")
+        }
+    }
+
+    fun payInvoice(invoice: String) {
+        val invoice: Invoice = invoice
+        try {
+            node?.sendPayment(invoice)
+        } catch (e: Exception) {
+            println("Error paying invoice: ${e.message}")
+        }
+    }
+
+    fun receivePayment() {
+        println(node?.receivePayment(6024_000uL, "test", 1000u).toString())
+    }
+
+    fun nextEvent() {
+        val nextEvent: Event? = node?.nextEvent()
+        println(nextEvent?.toString() ?: "No event for now")
+    }
+
+    fun eventHandled() {
+        node?.eventHandled()
     }
 }
