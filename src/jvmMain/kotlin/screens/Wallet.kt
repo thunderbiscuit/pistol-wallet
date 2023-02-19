@@ -19,7 +19,7 @@ fun Wallet() {
     Column {
         Title("Lightning Wallet")
         Column(
-            Modifier.padding(start = 140.dp).fillMaxSize(),
+            Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.SpaceBetween,
         ) {

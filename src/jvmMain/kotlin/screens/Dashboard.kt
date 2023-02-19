@@ -23,17 +23,11 @@ fun Dashboard() {
 
     val (snackbarVisibleState, setSnackBarState) = remember { mutableStateOf(false) }
 
-    if (LdkNode.node != null) {
-        nodeIsLive = true// nodeIsLive = LdkNode.node != null
-    }
+    if (LdkNode.node != null) nodeIsLive = true
 
     Column {
         Title("Node Dashboard")
-        Column(
-            Modifier
-                .padding(start = 140.dp)
-                .fillMaxSize(),
-        ) {
+        Column {
             Column(
                 modifier = Modifier.fillMaxSize().padding(start = 24.dp),
                 horizontalAlignment = Alignment.Start,

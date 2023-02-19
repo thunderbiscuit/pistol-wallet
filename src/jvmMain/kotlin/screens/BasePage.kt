@@ -17,8 +17,10 @@ import androidx.compose.ui.unit.sp
 fun BasePage() {
     val currentPage = remember { mutableStateOf(PageState.WALLET) }
 
-    Sidebar(currentPage)
-    Page(currentPage.value)
+    Row() {
+        Sidebar(currentPage)
+        Page(currentPage.value)
+    }
 }
 
 @Composable

@@ -24,7 +24,7 @@ fun Peers() {
     Column {
         Title("Peers")
         Column(
-            Modifier.padding(start = 140.dp).fillMaxSize(),
+            Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
