@@ -23,7 +23,7 @@ fun Dashboard() {
 
     val (snackbarVisibleState, setSnackBarState) = remember { mutableStateOf(false) }
 
-    if (LdkNode.node != null) nodeIsLive = true
+    // if (LdkNode.node != null) nodeIsLive = true
 
     Column {
         Title("Node Dashboard")
