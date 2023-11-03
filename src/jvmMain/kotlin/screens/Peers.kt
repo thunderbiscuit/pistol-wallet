@@ -22,7 +22,7 @@ fun Peers() {
     var amount by remember { mutableStateOf("") }
 
     Column {
-        Title("Peers")
+        Title("Channels")
         Column(
             Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.Start,
@@ -31,7 +31,7 @@ fun Peers() {
             Column {
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
-                    text = "Your current peers",
+                    text = "Your current channels",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = Color(0xff1f0208),
@@ -40,11 +40,10 @@ fun Peers() {
                 )
             }
             Column(
-                modifier = Modifier
-                    .padding(top = 48.dp, bottom = 48.dp)
+                modifier = Modifier.padding(top = 48.dp, bottom = 48.dp)
             ) {
                 Text(
-                    text = "Add a peer",
+                    text = "Add a channel",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = Color(0xff1f0208),
@@ -91,27 +90,32 @@ fun Peers() {
                         .fillMaxWidth()
                         .padding(horizontal = 24.dp)
                 )
-                Button(
-                    onClick = {
-                        // val nodeAddressAndPort = "$pubkey@$ip:$port"
-                        LdkNode.openChannel(
-                            pubkey,
-                            "$ip:$port",
-                            amount.toULong(),
-                            0uL,
-                            false
-                        )
-                    },
-                    modifier = Modifier
-                        .padding(top = 16.dp, bottom = 8.dp, start = 8.dp, end = 8.dp)
-                        .height(40.dp)
-                        .width(150.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color(0xff4f4f4f),
-                        contentColor = Color.White
-                    )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Open channel")
+                    Button(
+                        onClick = {
+                            LdkNode.openChannel(
+                                pubkey,
+                                "$ip:$port",
+                                amount.toULong(),
+                                0uL,
+                                false
+                            )
+                        },
+                        modifier = Modifier
+                            .padding(top = 16.dp, bottom = 8.dp, start = 8.dp, end = 8.dp)
+                            .height(40.dp)
+                            .width(150.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            backgroundColor = Color(0xff4f4f4f),
+                            contentColor = Color.White
+                        )
+                    ) {
+                        Text("Open channel")
+                    }
                 }
             }
         }

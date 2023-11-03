@@ -1,7 +1,9 @@
 package tb.sampleapps.pistolwallet
 
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
@@ -20,7 +22,16 @@ fun main() = application {
 
 @Composable
 fun App() {
-    MaterialTheme {
-        BasePage()
-    }
+    MaterialTheme(
+        colors = lightColors(
+            primary = Color(0xff26A69A),
+            // primaryVariant = Color(0xFF00796B),
+            // secondary = Color(0xFF009688)
+        ),
+        typography = MaterialTheme.typography,
+        shapes = MaterialTheme.shapes,
+        content = {
+            BasePage()
+        }
+    )
 }

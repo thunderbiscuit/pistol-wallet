@@ -38,49 +38,28 @@ fun Dashboard() {
                 } else {
                     Text("Node status: \uD83D\uDD34 Offline")
                 }
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(24.dp))
 
+                Text("Onchain balance:")
                 Text(
                     text = balance,
-                    fontSize = 18.sp,
+                    fontSize = 12.sp,
                     fontFamily = FontFamily.Monospace
                 )
-                Divider(
-                    modifier = Modifier.width(500.dp),
-                    color = Color(0xff4f4f4f),
-                    thickness = 1.dp
-                )
-                Text("  Onchain balance")
-                Spacer(modifier = Modifier.height(32.dp))
 
-                SelectionContainer {
-                    Text(
-                        text = nodeId,
-                        fontSize = 12.sp,
-                        fontFamily = FontFamily.Monospace
-                    )
-                }
-                Divider(
-                    modifier = Modifier.width(500.dp),
-                    color = Color(0xff4f4f4f),
-                    thickness = 1.dp
+                Text("Node pubkey:")
+                Text(
+                    text = nodeId,
+                    fontSize = 12.sp,
+                    fontFamily = FontFamily.Monospace
                 )
-                Text("  Node pubkey")
 
-                Spacer(modifier = Modifier.height(32.dp))
-                SelectionContainer {
-                    Text(
-                        text = fundingAddress,
-                        fontSize = 14.sp,
-                        fontFamily = FontFamily.Monospace
-                    )
-                }
-                Divider(
-                    modifier = Modifier.width(500.dp),
-                    color = Color(0xff4f4f4f),
-                    thickness = 1.dp
+                Text("Onchain funding address:")
+                Text(
+                    text = fundingAddress,
+                    fontSize = 12.sp,
+                    fontFamily = FontFamily.Monospace
                 )
-                Text("  Onchain wallet funding address")
 
                 Spacer(modifier = Modifier.height(32.dp))
 
