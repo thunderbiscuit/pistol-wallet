@@ -93,8 +93,14 @@ fun Peers() {
                 )
                 Button(
                     onClick = {
-                        val nodeAddressAndPort = "$pubkey@$ip:$port"
-                        LdkNode.openChannel(nodeAddressAndPort, amount.toULong())
+                        // val nodeAddressAndPort = "$pubkey@$ip:$port"
+                        LdkNode.openChannel(
+                            pubkey,
+                            "$ip:$port",
+                            amount.toULong(),
+                            0uL,
+                            false
+                        )
                     },
                     modifier = Modifier
                         .padding(top = 16.dp, bottom = 8.dp, start = 8.dp, end = 8.dp)

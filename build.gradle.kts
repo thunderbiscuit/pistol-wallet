@@ -24,7 +24,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation("org.lightningdevkit:ldk-node-jvm:0.2.0")
+                implementation("org.lightningdevkit:ldk-node-jvm:0.1.0")
             }
         }
         val jvmTest by getting

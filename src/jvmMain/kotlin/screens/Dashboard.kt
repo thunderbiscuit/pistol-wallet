@@ -108,16 +108,13 @@ fun Dashboard() {
                         Button(
                             onClick = {
                                 try {
-                                    if (LdkNode.node == null) {
-                                        LdkNode.buildNode()
-                                        LdkNode.node?.start()
-                                    }
+                                    LdkNode.node
                                     nodeIsLive = true
                                 } catch (e: Exception) {
                                     errorMessage = "Error starting node: ${e.message}"
                                     setSnackBarState(true)
                                 }
-                                nodeId = "${LdkNode.node?.nodeId()}"
+                                nodeId = LdkNode.node.nodeId()
                             },
                             modifier = Modifier
                                 .padding(top = 16.dp, bottom = 8.dp, start = 8.dp, end = 8.dp)
@@ -152,7 +149,7 @@ fun Dashboard() {
                             }
                             Button(
                                 onClick = {
-                                    fundingAddress = "${LdkNode.node?.newFundingAddress()}"
+                                    // fundingAddress = "${LdkNode.node.newFundingAddress()}"
                                 },
                                 enabled = nodeIsLive,
                                 modifier = Modifier
