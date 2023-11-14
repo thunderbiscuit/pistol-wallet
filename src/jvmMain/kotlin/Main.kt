@@ -14,7 +14,7 @@ fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
         title = "Pistol Wallet",
-        state = WindowState(width = 650.dp, height = 800.dp)
+        state = WindowState(width = 700.dp, height = 800.dp)
     ) {
         App()
     }
@@ -25,7 +25,7 @@ fun App() {
     MaterialTheme(
         colors = lightColors(
             primary = Color(0xff26A69A),
-            // primaryVariant = Color(0xFF00796B),
+            primaryVariant = Color(0xff5fcf95),
             // secondary = Color(0xFF009688)
         ),
         typography = MaterialTheme.typography,

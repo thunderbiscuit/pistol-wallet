@@ -29,7 +29,7 @@ fun BasePage() {
             icon = Icons.Outlined.Home,
         ),
         NavigationItem(
-            title = "Peers",
+            title = "Channels",
             icon = Icons.Outlined.AccountCircle,
         ),
     )
@@ -59,7 +59,7 @@ fun NavigationSideBar(
         header = {
             FloatingActionButton(
                 modifier = Modifier.padding(top = 8.dp),
-                onClick = { onNavigate(PageState.WALLET) },
+                onClick = { onNavigate(PageState.LNWALLET) },
             ) {
                 val image = painterResource("icons/flash_on.svg")
                 Image(
@@ -77,7 +77,7 @@ fun NavigationSideBar(
             items.forEachIndexed { index, item ->
                 val pageState = when (index) {
                     0 -> PageState.DASHBOARD
-                    1 -> PageState.PEERS
+                    1 -> PageState.CHANNELS
                     else -> throw IllegalArgumentException("Unknown index: $index")
                 }
 
@@ -100,9 +100,9 @@ fun NavigationSideBar(
 @Composable
 fun Page(currentPage: PageState) {
     when (currentPage) {
-        PageState.WALLET    -> Wallet()
+        PageState.LNWALLET  -> LnWallet()
         PageState.DASHBOARD -> Dashboard()
-        PageState.PEERS     -> Peers()
+        PageState.CHANNELS  -> Channels()
     }
 }
 
@@ -123,6 +123,6 @@ fun Title(title: String) {
 
 enum class PageState {
     DASHBOARD,
-    PEERS,
-    WALLET,
+    CHANNELS,
+    LNWALLET,
 }

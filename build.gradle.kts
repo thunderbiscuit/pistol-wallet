@@ -24,6 +24,12 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                // implementation("org.jetbrains.compose.runtime:runtime-jvm:0.4.0")
+                implementation("androidx.compose.runtime:runtime:1.2.1")
+                implementation("androidx.compose.foundation:foundation:1.2.1")
+                // For Compose Material 3 you will need to use the appropriate dependency, but as of my last update, Material 3 is not directly available for desktop.
+                implementation("org.jetbrains.compose.material:material:1.2.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
                 implementation("org.lightningdevkit:ldk-node-jvm:0.1.0")
             }
         }

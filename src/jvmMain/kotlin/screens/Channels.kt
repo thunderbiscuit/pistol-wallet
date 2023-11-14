@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.sp
 import tb.sampleapps.pistolwallet.lightning.LdkNode
 
 @Composable
-fun Peers() {
+fun Channels() {
     var pubkey by remember { mutableStateOf("") }
     var ip by remember { mutableStateOf("") }
     var port by remember { mutableStateOf("") }
